@@ -1,15 +1,34 @@
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
+
+try:
+    from setuptools import setup
+except ImportError:
+    from distutils.core import setup
+
+try:
+    import svglayers2pdf
+    version = svglayers2pdf.__version__
+except ImportError:
+    version = 'Undefined'
+
+packages = ['svglayers2pdf']
+requires = ['pyPdf', 'lxml', 'argpase']
+scripts  = []
+
 setup(
-      name='layers2pdf',
-      version      = '1.0',
+      name='SVGlayers2pdf',
+      version      = version,
       author       = 'Jean-Frédéric, Alexandre Bourget',
-      url          = 'http://github.com.org/JeanFred/layers2pdf',
-      description  = 'Converting Inkscape layers SVG to PDF'
+      url          = 'http://github.com.org/JeanFred/SVGlayers2pdf',
+      description  = 'Converting SVG Inkscape layers to PDF',
       license      = 'GPLv3',
       entry_points = {
         'console_scripts': [
-            'layers2pdf = layers2pdf:main',
+            'layers2pdf = svglayers2pdf.SVGconvert:main',
             ]
         },
-      install_requires= ['pyPdf', 'lxml']
+      packages=packages,
+      requires=requires,
+      scripts=scripts,
 )
