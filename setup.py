@@ -1,34 +1,15 @@
-try:
-    from setuptools import setup, find_packages
-except ImportError:
-    from distribute_setup import use_setuptools
-    use_setuptools()
-    from setuptools import setup, find_packages
-
-
+# -*- coding: utf-8 -*-
 setup(
-    name='InkscapeSlide',
-    version="1.0",
-    description='Inkscape Slide - the Inkscape Presentation maker',
-    author='Alexandre Bourget',
-    author_email='alex@bourget.cc',
-    url='http://projects.abourget.net',
-    license='GPLv3',
-    install_requires=[
-        "pyPdf",
-        "lxml",
-    ],
-    packages=find_packages(exclude=['ez_setup']),
-    include_package_data=True,
-    test_suite='nose.collector',
-    package_data={'inkscapeslide': ['i18n/*/LC_MESSAGES/*.mo']},
-    #message_extractors = {'inkscapeslide': [
-    #        ('**.py', 'python', None)]},
-    entry_points="""
-    [console_scripts]
-    inkscapeslide = inkscapeslide:main
-
-    """,
+      name='layers2pdf',
+      version      = '1.0',
+      author       = 'Jean-Frédéric, Alexandre Bourget',
+      url          = 'http://github.com.org/JeanFred/layers2pdf',
+      description  = 'Converting Inkscape layers SVG to PDF'
+      license      = 'GPLv3',
+      entry_points = {
+        'console_scripts': [
+            'layers2pdf = layers2pdf:main',
+            ]
+        },
+      install_requires= ['pyPdf', 'lxml']
 )
-
-
