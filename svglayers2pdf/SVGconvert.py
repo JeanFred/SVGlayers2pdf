@@ -12,7 +12,7 @@
 
 import lxml.etree
 import os
-from os.path import abspath
+from os.path import abspath, join
 import subprocess
 
 import tempfile
@@ -56,7 +56,7 @@ class SVGconvert():
 
         """
         svgbis = self.svg.replace("style=\"display:none\"", "style=\"display:inline\"")
-        svgbisfile = os.path.join(self.tempdir, "file.svg")
+        svgbisfile = join(self.tempdir, "file.svg")
         with open(svgbisfile, 'w') as f2:
             f2.write(svgbis)
         logging.info("Using %s as temporary directory", self.tempdir)
@@ -65,8 +65,8 @@ class SVGconvert():
         layers = [x for x in doc.iterdescendants(tag='{http://www.w3.org/2000/svg}g')
                   if x.attrib.get('{http://www.inkscape.org/namespaces/inkscape}groupmode', False) == 'layer']
         for i, layer in enumerate(layers):
-            pdfslide = abspath(os.path.join(self.tempdir,
-                                                    "%s.p%d.pdf" % (self._get_filename(), i)))
+            pdfslide = abspath(join(self.tempdir,
+                                    "%s.p%d.pdf" % (self._get_filename(), i)))
             label = layer.attrib.get('{http://www.inkscape.org/namespaces/inkscape}label')
             id = layer.attrib.get('id')
             logging.info("Converting %s...", label)
@@ -81,7 +81,7 @@ class SVGconvert():
     def _merge_PDFs(self, pdfslides):
         """Merge the given PDFs into one."""
         output_filename = "%s.pdf" % self._get_filename().split(".svg")[0]
-        output_filepath = abspath(os.path.join(os.curdir, output_filename))
+        output_filepath = abspath(join(os.curdir, output_filename))
         has_pyPdf = False
         try:
             import pyPdf
