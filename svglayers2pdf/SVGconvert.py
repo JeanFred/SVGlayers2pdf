@@ -107,7 +107,7 @@ class SVGconvert():
             logging.warning("PyPDF not installed, cannot merge PDF slides")
 
 
-def main(verbose=True):
+def main():
     """Main method, entry point of the script."""
     from argparse import ArgumentParser
     parser = ArgumentParser()
