@@ -73,7 +73,7 @@ class SVGconvert():
             label = layer.attrib.get('{http://www.inkscape.org/namespaces/inkscape}label')
             id = layer.attrib.get('id')
             logging.info("Converting %s...", label)
-            cmd = "inkscape -A=%s --export-area-page --export-id=%s %s"%(pdfslide, id, svgbisfile)
+            cmd = "inkscape -A=%s --export-area-page --export-id=%s %s" % (pdfslide, id, svgbisfile)
             logging.debug(cmd)
             subprocess.Popen(cmd, shell=True,
                              stdout=subprocess.PIPE,
@@ -81,11 +81,10 @@ class SVGconvert():
             pdfslides.append(pdfslide)
         return pdfslides
 
-
     def _merge_PDFs(self, pdfslides):
         """Merge the given PDFs into one."""
         output_filename = "%s.pdf" % self._get_filename().split(".svg")[0]
-        output_filepath = abspath(os.path.join(os.curdir,output_filename))
+        output_filepath = abspath(os.path.join(os.curdir, output_filename))
         has_pyPdf = False
         try:
             import pyPdf
