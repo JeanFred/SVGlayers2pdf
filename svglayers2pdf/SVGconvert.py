@@ -55,7 +55,8 @@ class SVGconvert():
         Return the list of PDFs.
 
         """
-        svgbis = self.svg.replace("style=\"display:none\"", "style=\"display:inline\"")
+        svgbis = self.svg.replace("style=\"display:none\"",
+                                  "style=\"display:inline\"")
         svgbisfile = join(self.tempdir, "file.svg")
         with open(svgbisfile, 'w') as f2:
             f2.write(svgbis)
@@ -70,7 +71,9 @@ class SVGconvert():
             label = layer.attrib.get('{http://www.inkscape.org/namespaces/inkscape}label')
             id = layer.attrib.get('id')
             logging.info("Converting %s...", label)
-            cmd = "inkscape -A=%s --export-area-page --export-id=%s %s" % (pdfslide, id, svgbisfile)
+            cmd = "inkscape -A=%s "\
+                  "--export-area-page "\
+                  "--export-id=%s %s" % (pdfslide, id, svgbisfile)
             logging.debug(cmd)
             subprocess.Popen(cmd, shell=True,
                              stdout=subprocess.PIPE,
