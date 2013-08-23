@@ -11,11 +11,9 @@
 #Edit by Jean-Frédéric
 
 import lxml.etree
-import sys
 import os
 from os.path import abspath
 import subprocess
-import re
 
 import tempfile
 from shutil import rmtree
