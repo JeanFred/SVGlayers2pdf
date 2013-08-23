@@ -86,7 +86,7 @@ class SVGconvert():
         try:
             import pyPdf
             has_pyPdf = True
-        except:
+        except ImportError:
             pass
 
         if has_pyPdf:
