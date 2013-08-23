@@ -69,11 +69,11 @@ class SVGconvert():
             pdfslide = abspath(join(self.tempdir,
                                     "%s.p%d.pdf" % (self._get_filename(), i)))
             label = layer.attrib.get('{http://www.inkscape.org/namespaces/inkscape}label')
-            id = layer.attrib.get('id')
+            layer_id = layer.attrib.get('id')
             logging.info("Converting %s...", label)
             cmd = "inkscape -A=%s "\
                   "--export-area-page "\
-                  "--export-id=%s %s" % (pdfslide, id, svgbisfile)
+                  "--export-id=%s %s" % (pdfslide, layer_id, svgbisfile)
             logging.debug(cmd)
             subprocess.Popen(cmd, shell=True,
                              stdout=subprocess.PIPE,
@@ -99,8 +99,8 @@ class SVGconvert():
             for slide in pdfslides:
                 inputstream = file(slide, "rb")
                 inputfiles.append(inputstream)
-                input = pyPdf.PdfFileReader(inputstream)
-                output.addPage(input.getPage(0))
+                reader = pyPdf.PdfFileReader(inputstream)
+                output.addPage(reader.getPage(0))
             outputStream = file(output_filepath, "wb")
             output.write(outputStream)
             outputStream.close()
