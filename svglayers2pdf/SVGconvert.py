@@ -17,7 +17,6 @@ import subprocess
 
 import tempfile
 from shutil import rmtree
-from string import replace
 import logging
 import argparse
 
@@ -56,7 +55,7 @@ class SVGconvert():
         Return the list of PDFs.
 
         """
-        svgbis = replace(self.svg, "style=\"display:none\"", "style=\"display:inline\"")
+        svgbis = self.svg.replace("style=\"display:none\"", "style=\"display:inline\"")
         svgbisfile = os.path.join(self.tempdir, "file.svg")
         with open(svgbisfile, 'w') as f2:
             f2.write(svgbis)
