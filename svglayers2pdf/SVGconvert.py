@@ -42,11 +42,15 @@ class SVGconvert():
         """Return the directory of the SVG file."""
         return os.path.dirname(self.filepath)
 
+    def _clean_up(self):
+        """Clean up by removing the temporary directory."""
+        rmtree(self.tempdir)
+
     def convert_SVG_to_PDF(self):
         """Convert the SVG to PDF."""
         pdfslides = self._convert_SVG_layers_to_PDF()
         self._merge_PDFs(pdfslides)
-        rmtree(self.tempdir)
+        self._clean_up()
 
     def _convert_SVG_layers_to_PDF(self):
         """Convert all SVG layers to PDFs files.
