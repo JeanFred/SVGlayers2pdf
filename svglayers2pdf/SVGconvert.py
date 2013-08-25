@@ -113,7 +113,7 @@ class SVGconvert():
 def main():
     """Main method, entry point of the script."""
     from argparse import ArgumentParser
-    description="Convert a Inkscape SVG layers to PDF"
+    description = "Convert a Inkscape SVG layers to PDF"
     parser = ArgumentParser(description=description)
     parser.add_argument("svgfilepath", type=argparse.FileType('r'),
                         metavar="SVG file",
