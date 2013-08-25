@@ -26,7 +26,7 @@ setup(
       license      = 'GPLv3',
       entry_points = {
         'console_scripts': [
-            'layers2pdf = svglayers2pdf.SVGconvert:main',
+            'svglayers2pdf = svglayers2pdf.SVGconvert:main',
             ]
         },
       packages=packages,
