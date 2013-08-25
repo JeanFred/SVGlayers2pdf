@@ -13,7 +13,7 @@ except ImportError:
     version = 'Undefined'
 
 packages = ['svglayers2pdf']
-requires = ['pyPdf', 'lxml', 'argparse']
+requires = ['argparse', 'lxml', 'pyPdf']
 scripts  = []
 
 setup(
