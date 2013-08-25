@@ -30,6 +30,6 @@ setup(
             ]
         },
       packages=packages,
-      requires=requires,
+      install_requires=requires,
       scripts=scripts,
 )
