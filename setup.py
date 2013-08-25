@@ -19,7 +19,8 @@ scripts  = []
 setup(
       name='SVGlayers2pdf',
       version      = version,
-      author       = 'Jean-Frédéric, Alexandre Bourget',
+      author       = 'Jean-Frédéric',
+      author_email = 'JeanFred@github',
       url          = 'http://github.com.org/JeanFred/SVGlayers2pdf',
       description  = 'Converting SVG Inkscape layers to PDF',
       license      = 'GPLv3',
